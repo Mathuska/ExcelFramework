@@ -1,3 +1,2 @@
-import "./scss/index.scss"
-
-console.log("hello");
+import './scss/index.scss';
+console.log('hello');
