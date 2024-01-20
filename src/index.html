@@ -14,7 +14,7 @@
     <div id="App">
       <div class="excel">
         <div class="excel__header">
-          <input type="text" class="input" value="new value" />
+          <input type="text" class="input" value="New project" />
           <div>
             <div class="btn">
               <span class="material-symbols-outlined"> delete </span>
@@ -24,10 +24,65 @@
             </div>
           </div>
         </div>
-        <div class="excel__toolbar"></div>
-        <div class="excel__formula"></div>
-        <div class="excel__table"></div>
+        <div class="excel__toolbar">
+          <div class="btn">
+            <span class="material-symbols-outlined">
+                format_align_left
+            </span>
+        </div>
+        <div class="btn">
+           <span class="material-symbols-outlined">
+               format_align_center
+           </span>
+        </div>
+        <div class="btn">
+           <span class="material-symbols-outlined">
+               format_align_right
+           </span>
+        </div>
+        <div class="btn">
+     <span class="material-symbols-outlined">
+         format_bold
+     </span>
+        </div>
+        <div class="btn">
+    <span class="material-symbols-outlined">
+        format_italic
+    </span>
+        </div>
+        <div class="btn">
+    <span class="material-symbols-outlined">
+        format_underlined
+    </span>
+        </div>
+
+
+    </div>
+        </div>
+        <div class="excel__formula">
+          <div class="info">Fx</div>
+          <div class="input" contenteditable="true" spellcheck="false"></div>
+        </div>
+        <div class="excel__table">
+          <div class="row">
+            <div class="row-info"></div>
+            <div class="row-data">
+              <div class="column">A</div>
+              <div class="column">B</div>
+              <div class="column">C</div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="row-info">1</div>
+            <div class="row-data">
+              <div class="cell selected" contenteditable="true"></div>
+              <div class="cell" contenteditable="true"></div>
+              <div class="cell" contenteditable="true"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>
-</html>
+  </html>

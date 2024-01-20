@@ -3,4 +3,57 @@
 
 .excel__table{
     position: absolute;
+    top: $formula-height + $header-height + $toolbar-height;
+    left: 0;
+    right: 0;
+    padding-bottom: 2px;
+    overflow: auto;
+    border: 1px solid $gray;
+    .row{
+        display: flex;
+        flex-direction: row;
+        min-height: 20px;
+        height: $height-row;
+    }
+    .row-info{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: $cell-width;
+        height: 100%;
+        border: 1px solid $gray;
+        border-top: none;
+        background-color: #96989a3c;
+    }
+    .row-data{
+        display: flex;
+    }
+    .column{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: $cell-width;
+        width: $column-width;
+        border: 1px solid $gray;
+        border-left: none;
+        border-top:none;
+        height: 100%;
+    }
+    .cell{
+        min-width: $cell-width;
+        width: $column-width;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        padding: 5px;
+        border: 1px solid #e2e3e3;
+        white-space: nowrap;
+        outline: none;
+
+        &.selected{
+            border: none;
+            outline: 2px solid #3c74ff;
+            z-index: 2;
+        }
+    }
 }
