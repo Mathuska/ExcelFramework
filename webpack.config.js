@@ -3,27 +3,18 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const ESLintPlugin = require('eslint-webpack-plugin');  
-
-const isProd = process.env.NODE_ENV === "production"
-const isDev = !isProd
-
+const isProd = process.env.NODE_ENV === "production";
+const isDev = !isProd;
 const path = require('path');
 
-
-
 module.exports = {
-  // parser: "@babel/eslint-parser",
   module: {
     rules: [
       {
         test: /\.s[ac]ss$/i,
         use: [
-          // Creates `style` nodes from JS strings
-          // "style-loader",
           MiniCssExtractPlugin.loader,
-          // Translates CSS into CommonJS
           "css-loader",
-          // Compiles Sass to CSS
           "sass-loader",
         ],
       },
@@ -40,7 +31,6 @@ module.exports = {
     ],
   },
   context: path.resolve(__dirname, 'src'),
-  
   mode: 'development',
   entry: '/index.js', 
   output: {
