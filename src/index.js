@@ -6,6 +6,6 @@ import {Header} from './components/header/Header';
 import './scss/index.scss';
 
 const excel = new Excel('#App', {
-  'components': [Header, Toolbar, Formula, Table],
+  components: [Header, Toolbar, Formula, Table],
 });
-console.log(excel.render());
+excel.render();
