@@ -16,6 +16,18 @@ class Dom {
     this.html('');
     return this;
   }
+
+  append(node) {
+    if (node instanceof Dom) {
+      node = node.$el;
+    }
+    if (Element.prototype.append) {
+      this.$el.append(node);
+    } else {
+      this.$el.appendChild(node);
+    }
+    return this;
+  }
 }
 
 export function $(selector) {
