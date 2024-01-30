@@ -7,6 +7,12 @@ export class Formula extends ExcelComponent {
       listeners: ['click', 'input'],
     });
   }
+  onClick(event) {
+    console.log('forlmula-click', event.target.textContent);
+  }
+  onInput(event) {
+    console.log('formula-input', event.target.textContent);
+  }
 
   static className = 'excel__formula';
 

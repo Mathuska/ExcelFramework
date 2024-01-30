@@ -28,6 +28,12 @@ class Dom {
     }
     return this;
   }
+  on(eventType, callback) {
+    this.$el.addEventListener(eventType, callback);
+  }
+  del(eventType, callback) {
+    this.el.removeEventListener(eventType, callback, true);
+  }
 }
 
 export function $(selector) {
