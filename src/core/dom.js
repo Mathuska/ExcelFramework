@@ -31,8 +31,8 @@ class Dom {
   on(eventType, callback) {
     this.$el.addEventListener(eventType, callback);
   }
-  del(eventType, callback) {
-    this.el.removeEventListener(eventType, callback, true);
+  off(eventType, callback) {
+    this.el.removeEventListener(eventType, callback);
   }
 }
 
