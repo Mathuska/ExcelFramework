@@ -1,6 +1,8 @@
 import {ExcelComponent} from '../../core/ExcelComponent';
 
 export class Formula extends ExcelComponent {
+  static className = 'excel__formula';
+
   constructor($root) {
     super($root, {
       name: 'Formula',
@@ -13,9 +15,6 @@ export class Formula extends ExcelComponent {
   onInput(event) {
     console.log('formula-input', event.target.textContent);
   }
-
-  static className = 'excel__formula';
-
 
   toHTML() {
     return `<div class="info">Fx</div>
