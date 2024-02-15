@@ -5,11 +5,8 @@ export class Header extends ExcelComponent {
   constructor($root) {
     super($root, {
       name: 'Header',
-      listeners: ['mouseenter'],
+      listeners: [],
     });
-  }
-  onMouseenter(event) {
-    console.log('log');
   }
 
   toHTML() {

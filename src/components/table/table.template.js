@@ -4,9 +4,11 @@ const CODES = {
   Z: 90,
 };
 
-const createRow = (content, number = '') => {
-  return `<div class="row">
-<div class="row-info">${number}</div>
+const createRow = ( content, i) => {
+  const resize = i ? '<div class ="row-resize" data-resize="row"></div>' : '';
+
+  return `<div class="row" data-type="resizeble">
+<div class="row-info">${i ? i : ''} ${resize}</div>
 <div class="row-data">
 ${content}
 </div>
@@ -14,7 +16,11 @@ ${content}
 };
 
 const createCol = (col) => {
-  return `<div class="column">${col}</div>`;
+  return `<div class="column" data-type="resizeble">${col}
+    <div class="col-resize" data-resize="col">
+
+  </div>
+  </div>`;
 };
 
 const createCell = () => {
