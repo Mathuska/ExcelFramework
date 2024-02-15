@@ -12,6 +12,10 @@ class Dom {
     return this.$el.outerHTML.trim();
   }
 
+  get data() {
+    return this.$el.dataset;
+  }
+
   clear() {
     this.html('');
     return this;

@@ -15,16 +15,16 @@ ${content}
 </div>`;
 };
 
-const createCol = (col) => {
-  return `<div class="column" data-type="resizeble">${col}
+const createCol = (col, index) => {
+  return `<div class="column" data-type="resizeble" data-col="${index}">${col}
     <div class="col-resize" data-resize="col">
 
   </div>
   </div>`;
 };
 
-const createCell = () => {
-  return `<div class="cell" contenteditable="true"></div>`;
+const createCell = (_, index) => {
+  return `<div class="cell" contenteditable="true" data-col="${index}"></div>`;
 };
 
 const toChar = (_, index) => {

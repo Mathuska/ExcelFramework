@@ -18,22 +18,22 @@ export class Table extends ExcelComponent {
   //   console.log('up', event.target);
   // }
   onMousedown(event) {
-    if (event.target.dataset?.resize) {
+    if (event.target.dataset.resize) {
       const $resize = $(event.target);
       const $parent = $resize.closest('[data-type="resizeble"]');
       const cords = $parent.getCoords();
+
       document.onmousemove = (event) => {
         const delta = event.pageX - cords.right;
         const value = cords.width + delta;
 
         $parent.$el.style.width = value + 'px';
+        document.querySelectorAll(`[data-col="${$parent.data.col}"]`).forEach((cell) => cell.style.width = value + 'px');
 
         document.onmouseup = () => {
           document.onmousemove = null;
         };
       };
-      console.log(cords.right);
-      console.log($parent.getCoords());
     }
   }
 
