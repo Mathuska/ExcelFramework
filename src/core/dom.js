@@ -29,6 +29,27 @@ class Dom {
     return this.$el.getBoundingClientRect();
   }
 
+  fiindAll(selector) {
+    return this.$el.querySelectorAll(selector);
+  }
+
+  /*
+  {
+    height: '30px',
+    width: '42px',
+    backgroundColor: 'red',
+  }
+  */
+  css(styles = {}) {
+    for (const key in styles) {
+      if (Object.hasOwnProperty.call(styles, key)) {
+        const element = styles[key];
+        console.log(key);
+        console.log(element);
+      }
+    }
+  }
+
   append(node) {
     if (node instanceof Dom) {
       node = node.$el;

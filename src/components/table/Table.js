@@ -22,13 +22,20 @@ export class Table extends ExcelComponent {
       const $resize = $(event.target);
       const $parent = $resize.closest('[data-type="resizeble"]');
       const cords = $parent.getCoords();
+      const type = $resize.data.resize;
+      const cells = this.$root.fiindAll(`[data-col="${$parent.data.col}"]`);
 
       document.onmousemove = (event) => {
-        const delta = event.pageX - cords.right;
-        const value = cords.width + delta;
-
-        $parent.$el.style.width = value + 'px';
-        document.querySelectorAll(`[data-col="${$parent.data.col}"]`).forEach((cell) => cell.style.width = value + 'px');
+        if (type === 'col') {
+          const delta = event.pageX - cords.right;
+          const value = cords.width + delta;
+          $parent.css({width: value + 'px'});
+          cells.forEach((cell) => cell.style.width = value + 'px');
+        } else {
+          const delta = event.pageY - cords.bottom;
+          const value = cords.height + delta;
+          $parent.css({height: value + 'px'});
+        }
 
         document.onmouseup = () => {
           document.onmousemove = null;
@@ -36,7 +43,6 @@ export class Table extends ExcelComponent {
       };
     }
   }
-
   toHTML() {
     return createTable();
   }
