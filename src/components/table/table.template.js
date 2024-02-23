@@ -1,4 +1,3 @@
-
 const CODES = {
   A: 65,
   Z: 90,
@@ -18,7 +17,6 @@ ${content}
 const createCol = (col, index) => {
   return `<div class="column" data-type="resizeble" data-col="${index}">${col}
     <div class="col-resize" data-resize="col">
-
   </div>
   </div>`;
 };

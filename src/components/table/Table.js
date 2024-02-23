@@ -11,33 +11,43 @@ export class Table extends ExcelComponent {
     });
   }
 
-  // onMousemove(event) {
-  //   console.log('move', event.target);
-  // }
-  // onMouseup(event) {
-  //   console.log('up', event.target);
-  // }
   onMousedown(event) {
     if (event.target.dataset.resize) {
       const $resize = $(event.target);
       const $parent = $resize.closest('[data-type="resizeble"]');
       const cords = $parent.getCoords();
       const type = $resize.data.resize;
-      const cells = this.$root.fiindAll(`[data-col="${$parent.data.col}"]`);
+      let value = null;
+      $resize.css({
+        opacity: 1,
+        zIndex: 1000,
+        bottom: '-5000px',
+      });
 
       document.onmousemove = (event) => {
+        $resize.css({opacity: 0.5});
         if (type === 'col') {
           const delta = event.pageX - cords.right;
-          const value = cords.width + delta;
-          $parent.css({width: value + 'px'});
-          cells.forEach((cell) => cell.style.width = value + 'px');
+          value = cords.width + delta;
+          $resize.css({right: -delta + 'px'});
         } else {
           const delta = event.pageY - cords.bottom;
-          const value = cords.height + delta;
-          $parent.css({height: value + 'px'});
+          value = cords.height + delta;
+          $resize.css({bottom: -delta + 'px'});
         }
 
         document.onmouseup = () => {
+          if (type === 'col') {
+            this.$root.fiindAll(`[data-col="${$parent.data.col}"]`)
+                .forEach((cell) => (cell.style.width = value + 'px'));
+            $parent.css({width: value + 'px'});
+          }
+          $resize.css({
+            opacity: 0,
+            bottom: 0,
+            right: 0,
+          });
+          this.onMousedown = null;
           document.onmousemove = null;
         };
       };

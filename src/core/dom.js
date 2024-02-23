@@ -1,7 +1,9 @@
-
 class Dom {
   constructor(selector) {
-    this.$el = typeof selector === 'string' ? document.querySelector(selector) : selector;
+    this.$el =
+      typeof selector === 'string' ?
+        document.querySelector(selector) :
+        selector;
   }
 
   html(html) {
@@ -41,13 +43,9 @@ class Dom {
   }
   */
   css(styles = {}) {
-    for (const key in styles) {
-      if (Object.hasOwnProperty.call(styles, key)) {
-        const element = styles[key];
-        console.log(key);
-        console.log(element);
-      }
-    }
+    Object.keys(styles).forEach((key) => {
+      this.$el.style[key] = styles[key];
+    });
   }
 
   append(node) {
@@ -73,7 +71,7 @@ export function $(selector) {
   return new Dom(selector);
 }
 
-$.create = (tagName, classes = '') =>{
+$.create = (tagName, classes = '') => {
   const el = document.createElement(tagName);
   if (classes) {
     el.classList.add(classes);
