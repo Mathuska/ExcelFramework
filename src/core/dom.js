@@ -31,7 +31,7 @@ class Dom {
     return this.$el.getBoundingClientRect();
   }
 
-  fiindAll(selector) {
+  findAll(selector) {
     return this.$el.querySelectorAll(selector);
   }
 
