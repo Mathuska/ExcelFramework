@@ -21,8 +21,10 @@ const createCol = (col, index) => {
   </div>`;
 };
 
-const createCell = (_, index) => {
-  return `<div class="cell" contenteditable="true" data-col="${index}"></div>`;
+const createCell = (row) => {
+  return (_, index) => {
+    return `<div class="cell" contenteditable="true" data-col="${index}" data-id="${row}:${index}"></div>`;
+  };
 };
 
 const toChar = (_, index) => {
@@ -38,7 +40,7 @@ export const createTable = (rowsCount = 10) => {
   rows.push(createRow(cols));
 
   for (let i = 0; i < rowsCount; i++) {
-    const cels = new Array(columnsCount + 1).fill('').map(createCell).join('');
+    const cels = new Array(columnsCount + 1).fill('').map(createCell(i)).join('');
     rows.push(createRow(cels, i + 1));
   }
   return (`${rows.join('')}`);

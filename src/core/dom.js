@@ -35,6 +35,16 @@ class Dom {
     return this.$el.querySelectorAll(selector);
   }
 
+  find(selector) {
+    return $(this.$el.querySelector(selector));
+  }
+
+  addClass(classname) {
+    this.$el.classList.add(classname);
+  }
+  removeClass(classname) {
+    this.$el.classList.remove(classname);
+  }
   /*
   {
     height: '30px',

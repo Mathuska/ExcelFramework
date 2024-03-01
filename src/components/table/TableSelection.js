@@ -5,6 +5,7 @@ export class TableSelection {
 
   select($el) {
     this.group.push($el);
+    $el.addClass('selected');
   }
   selectGroup() {}
 }
