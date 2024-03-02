@@ -45,6 +45,13 @@ class Dom {
   removeClass(classname) {
     this.$el.classList.remove(classname);
   }
+  id(parse) {
+    if (parse) {
+      const parsed = this.id().split(':');
+      return {row: +parsed[0], col: +parsed[1]};
+    }
+    return this.data.id;
+  }
   /*
   {
     height: '30px',

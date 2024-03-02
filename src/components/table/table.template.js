@@ -23,7 +23,7 @@ const createCol = (col, index) => {
 
 const createCell = (row) => {
   return (_, index) => {
-    return `<div class="cell" contenteditable="true" data-col="${index}" data-id="${row}:${index}"></div>`;
+    return `<div class="cell" contenteditable="true" data-col="${index}" data-id="${row}:${index}" data-type="cell"></div>`;
   };
 };
 
