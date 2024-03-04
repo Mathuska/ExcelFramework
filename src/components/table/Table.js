@@ -1,8 +1,9 @@
 import {ExcelComponent} from '../../core/ExcelComponent';
+import {TableSelection} from './TableSelection';
 import {createTable} from './table.template';
 import resizeHandler from './table.resize';
-import {TableSelection} from './TableSelection';
 import {$} from '../../core/dom';
+import {range} from '../../core/utils';
 
 export class Table extends ExcelComponent {
   static className = 'excel__table';
@@ -28,11 +29,16 @@ export class Table extends ExcelComponent {
     if (event.target.dataset.resize) {
       resizeHandler(event, this.$root);
     } else if (event.target.dataset.type === 'cell') {
-      const target = $(event.target);
+      const $target = $(event.target);
       if (event.shiftKey) {
-        console.log(target.id());
+        const target = $target.id(true);
+        const current = this.selection.current.id(true);
+        const colls = range(current.col, target.col);
+        const rows = range(current.row, target.row);
+        console.log(colls);
+        console.log(rows);
       }
-      this.selection.select(target);
+      this.selection.select($target);
     }
   }
   toHTML() {

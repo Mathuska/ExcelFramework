@@ -11,7 +11,11 @@ export class TableSelection {
     $el.addClass(TableSelection.className);
     this.current = $el;
   }
-  selectGroup() {}
+  selectGroup($group) {
+    this.clear();
+    this.group = $group;
+    this.group.forEach((item) => item.addClass(TableSelection.className));
+  }
   clear() {
     this.group.forEach((item) => item.removeClass(TableSelection.className));
     this.group = [];

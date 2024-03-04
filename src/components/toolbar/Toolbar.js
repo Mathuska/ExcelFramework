@@ -37,7 +37,6 @@ export class Toolbar extends ExcelComponent {
 <span class="material-symbols-outlined">
 format_italic
 </span>
-</div>
-<div class="btn">`;
+</div>`;
   }
 }
