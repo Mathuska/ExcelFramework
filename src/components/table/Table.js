@@ -21,7 +21,7 @@ export class Table extends ExcelComponent {
   }
   init() {
     super.init();
-    const $cell = this.$root.find('[data-id = "0:0"]');
+    const $cell = this.$root.find('[data-id ="0:0"]');
     this.selection.select($cell);
   }
 
@@ -35,10 +35,19 @@ export class Table extends ExcelComponent {
         const current = this.selection.current.id(true);
         const colls = range(current.col, target.col);
         const rows = range(current.row, target.row);
-        console.log(colls);
-        console.log(rows);
+        const idS = colls.reduce((preiousValue, currentValue) => {
+          rows.forEach((item) =>{
+            preiousValue.push(`${item}:${currentValue}`);
+          });
+          return preiousValue;
+        }, []);
+        const $cells = idS.map((item) => {
+          return this.$root.find(`[data-id ="${item}"]`);
+        });
+        this.selection.selectGroup($cells);
+      } else {
+        this.selection.select($target);
       }
-      this.selection.select($target);
     }
   }
   toHTML() {

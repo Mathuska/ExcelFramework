@@ -82,5 +82,10 @@
             outline: 2px solid #3c74ff;
             z-index: 2;
         }
+        &.selected1{
+            // border: none;
+            background-color: #749bff ;
+            z-index: 2;
+        }
     }
 }
