@@ -15,14 +15,11 @@ export class TableSelection {
   selectGroup($group = []) {
     this.clear();
     this.group = $group;
-    for (let i = 0; i < this.group.length; i++) {
-      const element = this.group[i];
-      this.group[0].addClass(TableSelection.className);
-      if (i > 0) {
-        element.addClass(TableSelection.className1);
-      }
-    }
-    // this.group.forEach((item) => item.addClass(TableSelection.className1));
+    this.group.forEach((item) => {
+      item.addClass(TableSelection.className1);
+      this.current.removeClass(TableSelection.className1);
+      this.current.addClass(TableSelection.className);
+    });
   }
   clear() {
     this.group.forEach((item) => item.removeClass(TableSelection.className1));

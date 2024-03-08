@@ -3,17 +3,27 @@ import {TableSelection} from './TableSelection';
 import {createTable} from './table.template';
 import resizeHandler from './table.resize';
 import {$} from '../../core/dom';
-import {range} from '../../core/utils';
+import {matrix} from '../../core/functions';
 
 export class Table extends ExcelComponent {
   static className = 'excel__table';
   constructor($root) {
     super($root, {
       name: 'Table',
-      listeners: ['mousedown', 'mouseup', 'mousemove'],
+      listeners: ['mousedown', 'keydown', 'mousemove'],
     });
   }
-  onMouseup() {}
+
+  onKeydown(event) {
+    const keys = ['ArrowDown', 'ArrowUp', 'ArrowLeft', 'ArrowRight'];
+    const {key} = event;
+    if (keys.includes(key)) {
+      event.preventDefault();
+      const current = this.selection.current.id(true);
+      console.log(current);
+    }
+    console.log(keys, key);
+  }
   onMousemove() {}
 
   prepare() {
@@ -31,16 +41,7 @@ export class Table extends ExcelComponent {
     } else if (event.target.dataset.type === 'cell') {
       const $target = $(event.target);
       if (event.shiftKey) {
-        const target = $target.id(true);
-        const current = this.selection.current.id(true);
-        const colls = range(current.col, target.col);
-        const rows = range(current.row, target.row);
-        const idS = colls.reduce((preiousValue, currentValue) => {
-          rows.forEach((item) =>{
-            preiousValue.push(`${item}:${currentValue}`);
-          });
-          return preiousValue;
-        }, []);
+        const idS = matrix($target, this.selection.current);
         const $cells = idS.map((item) => {
           return this.$root.find(`[data-id ="${item}"]`);
         });
